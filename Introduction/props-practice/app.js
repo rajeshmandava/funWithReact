@@ -1,5 +1,5 @@
-let cards = data.map((course) => {
-  return <Card data={course} />;
+let cards = data.map((course, i) => {
+  return <Card key={i} data={course} />;
 });
 
 console.log(cards);
