@@ -30,6 +30,21 @@ const list = [
   },
 ];
 
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  getName() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const robin = new Person("Robin", "Wàllen");
+console.log(robin);
+
+const dennis = new Person("Dennis", "Richie");
+console.log(dennis);
 function App() {
   return (
     <div>
@@ -43,6 +58,9 @@ function App() {
 
       <hr></hr>
       <List />
+      <hr></hr>
+      <List />
+      <hr></hr>
     </div>
   );
 }
