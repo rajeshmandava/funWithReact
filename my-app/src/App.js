@@ -45,52 +45,46 @@ console.log(robin);
 
 const dennis = new Person("Dennis", "Richie");
 console.log(dennis);
-function App() {
-  return (
-    <div>
-      <h1>
-        {welcome.greeting} {welcome.title}
-      </h1>
-      <Search></Search>
-      <h1>
-        {welcome.greeting} {title()}
-      </h1>
 
-      <hr></hr>
-      <List />
-      <hr></hr>
-      <List />
-      <hr></hr>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <h1>
+      {welcome.greeting} {welcome.title}
+    </h1>
+    <Search></Search>
+    <h1>
+      {welcome.greeting} {title()}
+    </h1>
+
+    <hr></hr>
+    <List />
+    <hr></hr>
+    <List />
+    <hr></hr>
+  </div>
+);
+
 export default App;
 
-function List() {
-  return (
-    <ul>
-      {list.map(function (item) {
-        return (
-          <li key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-            <span>{item.popularLibraries}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
+const List = () => (
+  <ul>
+    {list.map((item) => (
+      <li key={item.objectID}>
+        <span>
+          <a href={item.url}>{item.title}</a>
+        </span>
+        <span>{item.author}</span>
+        <span>{item.num_comments}</span>
+        <span>{item.points}</span>
+        <span>{item.popularLibraries}</span>
+      </li>
+    ))}
+  </ul>
+);
 
-function Search() {
-  return (
-    <div>
-      <label htmlFor="search">Search:</label>
-      <input id="search" type="text"></input>
-    </div>
-  );
-}
+const Search = () => (
+  <div>
+    <label htmlFor="search">Search:</label>
+    <input id="search" type="text"></input>
+  </div>
+);
