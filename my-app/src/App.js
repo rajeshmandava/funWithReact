@@ -8,28 +8,6 @@ const title = function () {
   return "New React";
 };
 
-const list = [
-  {
-    title: "React",
-    url: "https://reactjs.org/",
-    author: "Jordan Walke",
-    num_comments: 3,
-    points: 4,
-    popularLibraries: "Material UI, Ant Design, React-Bootstrap",
-
-    objectID: 0,
-  },
-  {
-    title: "Redux",
-    url: "https://redux.js.org/",
-    author: "Dan Abramov, Andrew Clark",
-    num_comments: 2,
-    points: 5,
-    popularLibraries: "Redux-Actions, Reselect, Redux-Saga",
-    objectID: 1,
-  },
-];
-
 class Person {
   constructor(firstName, lastName) {
     this.firstName = firstName;
@@ -46,40 +24,66 @@ console.log(robin);
 const dennis = new Person("Dennis", "Richie");
 console.log(dennis);
 
-const App = () => (
-  <div>
-    <h1>
-      {welcome.greeting} {welcome.title}
-    </h1>
-    <Search />
-    <h1>
-      {welcome.greeting} {title()}
-    </h1>
+const App = () => {
+  const stories = [
+    {
+      title: "React",
+      url: "https://reactjs.org/",
+      author: "Jordan Walke",
+      num_comments: 3,
+      points: 4,
+      popularLibraries: "Material UI, Ant Design, React-Bootstrap",
 
-    <hr></hr>
-    <List />
-    <hr></hr>
-    <List />
-    <hr></hr>
-  </div>
-);
+      objectID: 0,
+    },
+    {
+      title: "Redux",
+      url: "https://redux.js.org/",
+      author: "Dan Abramov, Andrew Clark",
+      num_comments: 2,
+      points: 5,
+      popularLibraries: "Redux-Actions, Reselect, Redux-Saga",
+      objectID: 1,
+    },
+  ];
+  return (
+    <div>
+      <h1>
+        {welcome.greeting} {welcome.title}
+      </h1>
+      <Search />
+      <h1>
+        {welcome.greeting} {title()}
+      </h1>
+
+      <hr></hr>
+      <List list={stories} />
+      <hr></hr>
+      <List list={stories} />
+      <hr></hr>
+    </div>
+  );
+};
 
 export default App;
 
-const List = () => (
+const List = (props) => (
   <ul>
-    {list.map((item) => (
-      <li key={item.objectID}>
-        <span>
-          <a href={item.url}>{item.title}</a>
-        </span>
-        <span>{item.author}</span>
-        <span>{item.num_comments}</span>
-        <span>{item.points}</span>
-        <span>{item.popularLibraries}</span>
-      </li>
+    {props.list.map((item) => (
+      <Item key={item.objectID} item={item} />
     ))}
   </ul>
+);
+
+const Item = (props) => (
+  <li>
+    <span>
+      <a href={props.item.url}>{props.item.title}</a>
+    </span>
+    <span>{props.item.author}</span>
+    <span>{props.item.num_comments}</span>
+    <span>{props.item.points}</span>
+  </li>
 );
 
 const Search = () => {
