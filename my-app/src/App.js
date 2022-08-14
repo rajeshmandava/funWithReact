@@ -51,7 +51,7 @@ const App = () => (
     <h1>
       {welcome.greeting} {welcome.title}
     </h1>
-    <Search></Search>
+    <Search />
     <h1>
       {welcome.greeting} {title()}
     </h1>
@@ -82,9 +82,15 @@ const List = () => (
   </ul>
 );
 
-const Search = () => (
-  <div>
-    <label htmlFor="search">Search:</label>
-    <input id="search" type="text"></input>
-  </div>
-);
+const Search = () => {
+  const handleChange = (event) => {
+    console.log(event);
+    console.log(event.target.value);
+  };
+  return (
+    <div>
+      <label htmlFor="search">Search:</label>
+      <input id="search" type="text" onChange={handleChange}></input>
+    </div>
+  );
+};
