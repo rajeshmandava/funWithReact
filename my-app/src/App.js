@@ -8,27 +8,27 @@ const title = function () {
   return "New React";
 };
 
-class Person {
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-  getName() {
-    return this.firstName + " " + this.lastName;
-  }
-}
+// class Person {
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+//   getName() {
+//     return this.firstName + " " + this.lastName;
+//   }
+// }
 
-const robin = new Person("Robin", "Wàllen");
-console.log(robin);
+// const robin = new Person("Robin", "Wàllen");
+// console.log(robin);
 
-const dennis = new Person("Dennis", "Richie");
-console.log(dennis);
+// const dennis = new Person("Dennis", "Richie");
+// console.log(dennis);
 
 const App = () => {
   const stories = [
     {
-      title: "React",
-      url: "https://reactjs.org/",
+      title: "WikiMedia",
+      url: "https://www.wikimedia.org/",
       author: "Jordan Walke",
       num_comments: 3,
       points: 4,
@@ -55,7 +55,6 @@ const App = () => {
       <h1>
         {welcome.greeting} {title()}
       </h1>
-
       <hr></hr>
       <List list={stories} />
       <hr></hr>
@@ -87,14 +86,18 @@ const Item = (props) => (
 );
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = React.useState("");
   const handleChange = (event) => {
-    console.log(event);
+    setSearchTerm(event.target.value);
     console.log(event.target.value);
   };
   return (
     <div>
       <label htmlFor="search">Search:</label>
       <input id="search" type="text" onChange={handleChange}></input>
+      <p>
+        Searching for <strong>{searchTerm}</strong>
+      </p>
     </div>
   );
 };
