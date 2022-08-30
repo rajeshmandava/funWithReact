@@ -25,6 +25,17 @@ const title = function () {
 // console.log(dennis);
 
 const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  const handleDecrease = () => {
+    setCount(count - 1);
+    console.log(count);
+  };
+
+  const handleIncrease = () => {
+    setCount(count + 1);
+    console.log(count);
+  };
   const stories = [
     {
       title: "WikiMedia",
@@ -60,6 +71,12 @@ const App = () => {
       <hr></hr>
       <List list={stories} />
       <hr></hr>
+      <button type="button" onClick={handleIncrease}>
+        Increase
+      </button>
+      <button type="button" onClick={handleDecrease}>
+        Decrease
+      </button>
     </div>
   );
 };
